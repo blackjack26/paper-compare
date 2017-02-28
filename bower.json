@@ -13,8 +13,12 @@
     "authors": [
         "John Grzechowiak"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/blackjack26/paper-compare.git"
+    },
     "license": "MIT",
-    "homepage": "",
+    "homepage": "https://github.com/blackjack26/paper-compare",
     "dependencies": {
         "polymer": "Polymer/polymer#^1.1.0"
     },
