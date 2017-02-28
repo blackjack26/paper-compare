@@ -3,11 +3,12 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
-	<link href="compare-element.html" rel="import">
+	<link href="paper-compare.html" rel="import">
+	<link href="../paper-item/paper-item.html" rel="import">
 </head>
 <body>
 	<div style="max-width: 750px; margin: 0 auto; width: 100%;">
-		<compare-element left-title="Inactive" right-title="Active">
+		<paper-compare left-title="Inactive" right-title="Active" onmove="test()">
 			<div role="listbox" class="compare-list" id="left">
 				<paper-item>Kevin M</paper-item>
 				<paper-item>Nick C</paper-item>
@@ -19,14 +20,21 @@
 				<paper-item>Samantha K</paper-item>
 				<paper-item>Melissa M</paper-item>
 			</div>
-		</compare-element>
+		</paper-compare>
 
-		<style is="custom-style">
-			compare-element {
-				--paper-header-color: var(--paper-blue-a700);
+		<!--style is="custom-style">
+			paper-compare {
+				--paper-header-color: var(--paper-red-a700);
 			}
-		</style>
+		</style-->
 	</div>
+
+	<script>
+		function test() {
+			console.log("YEAH");
+		}
+	</script>
+
 </body>
 
 </html>

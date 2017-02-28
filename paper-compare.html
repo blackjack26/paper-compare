@@ -1,0 +1,96 @@
+<link href="../polymer/polymer.html" rel="import">
+<link href="../paper-material/paper-material.html" rel="import">
+
+<dom-module id="paper-compare">
+	<style is="custom-style">
+		h1 {
+			padding: 5px 10px;
+			margin: 0;
+			font-family: sans-serif;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			text-align: center;
+			font-size: 25px;
+			color: rgba(255,255,255,0.95);
+			background: var(--paper-header-color, --paper-cyan-a700);
+		}
+		.compare {
+			display: flex;
+		}
+		#right-div {
+			border-left: 1px solid rgba(0,0,0,0.2);
+		}
+		#left-div, #right-div {
+			flex: auto;
+			flex-grow: 1;
+    		flex-basis: 0;
+		}
+	</style>
+
+	<template>
+		<paper-material class="compare" elevation="{{elevation}}">
+			<div id="left-div">
+				<h1>[[leftTitle]]</h1>
+				<content id="left-content" select=".compare-list#left"></content>
+			</div>
+
+			<div id="right-div">
+				<h1>[[rightTitle]]</h1>
+				<content id="right-content" select=".compare-list#right"></content>
+			</div>
+		</paper-material>
+	</template>
+
+	<script>
+		Polymer({
+			is: "paper-compare",
+
+			properties: {
+				leftTitle: {
+					type: String
+				},
+				rightTitle: {
+					type: String
+				},
+				elevation: {
+					type: Number,
+					value: 1
+				},
+				onmove: {
+					type: String,
+					notify: true
+				}
+			},
+			attached: function() {
+				if (this.onmove) {
+					this.onMoveFunc = new Function('return ' + this.onmove);
+				}
+			},
+
+			listeners: {
+				'tap': '_onTap'
+			},
+
+			moveLeft: function(e) {
+				document.getElementById("left").appendChild(e);
+				this.onMoveFunc();
+			},
+
+			moveRight: function(e) {
+				document.getElementById("right").appendChild(e);
+				this.onMoveFunc();
+			},
+
+			_onTap: function(e) {
+				if (e.target.parentNode.getAttribute("class").includes("compare-list")) {
+					var side = e.target.parentNode.id;
+					if (side == "left")
+						this.moveRight(e.target);
+					else if (side == "right")
+						this.moveLeft(e.target);
+					else
+						throw "Parent does not have either 'left' or 'right' id.";
+				}
+			}
+		});
+	</script>
+</dom-module>
