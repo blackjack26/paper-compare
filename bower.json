@@ -1,0 +1,22 @@
+{
+    "name": "paper-compare",
+    "version": "0.0.1",
+    "description": "Material design compare element",
+    "main": "paper-compare.html",
+    "private": true,
+    "keywords": [
+        "paper",
+        "compare",
+        "web-components",
+        "polymer"
+    ],
+    "authors": [
+        "John Grzechowiak"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.1.0"
+    },
+    "ignore": []
+}
