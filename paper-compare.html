@@ -25,13 +25,18 @@ The `elevation` of the element can be raised by setting the elevation attribute.
         ...
     </paper-compare>
 
-The color of the header can be changed by changing the value for `--paper-header-color`.
+### Styling
 
-    <style is="custom-style">
-        paper-compare {
-            --paper-header-color: #339966;
-        }
-    </style>
+The following custom properties are available for styling:
+
+Custom Property | Description | Default
+----------------|-------------|--------
+`--header-color` | Background color of the titles | `--paper-cyan-a700`
+`--list-spacing` | Spacing between the two lists | `5px`
+`--hover-left-background` | Background on hover of left elements | `--paper-grey-200`
+`--hover-right-background` | Background on hover of right elements | `--paper-grey-200`
+`--cursor-left` | Cursor hovering on left elements | `pointer`
+`--cursor-right` | Cursor hovering on right elements | `pointer`
 
 @demo demo/index.html
 -->
@@ -46,37 +51,52 @@ The color of the header can be changed by changing the value for `--paper-header
 			text-align: center;
 			font-size: 25px;
 			color: rgba(255,255,255,0.95);
-			background: var(--paper-header-color, --paper-cyan-a700);
+			background: var(--header-color, --paper-cyan-a700);
 		}
 		.compare {
 			display: flex;
 		}
 		#right-div {
-			border-left: 1px solid rgba(0,0,0,0.2);
+			margin-left: var(--list-spacing, 5px);
 		}
 		#left-div, #right-div {
 			flex: auto;
 			flex-grow: 1;
     		flex-basis: 0;
 		}
-        
+		:host([noleft]) { 
+			--hover-right-background: transparent;
+			--cursor-right: default;
+		}
+		:host([noright]) { 
+			--hover-left-background: transparent;
+			--cursor-left: default;
+		}
+		#left-div::content .compare-list *:hover {
+            background: var(--hover-left-background, --paper-grey-200);
+            cursor: var(--cursor-left, pointer);
+		}
+		#right-div::content .compare-list *:hover {
+            background: var(--hover-right-background, --paper-grey-200);
+            cursor: var(--cursor-right, pointer);
+		}
         :host([hidden]) {
             display: none !important;
         }
 	</style>
 
 	<template>
-		<paper-material class="compare" elevation="{{elevation}}">
-			<div id="left-div">
+		<div class="compare">
+			<paper-material id="left-div" elevation="{{elevation}}">
 				<h1>[[leftTitle]]</h1>
 				<content id="left-content" select=".compare-list#left"></content>
-			</div>
+			</paper-material>
 
-			<div id="right-div">
+			<paper-material id="right-div" elevation="{{elevation}}">
 				<h1>[[rightTitle]]</h1>
 				<content id="right-content" select=".compare-list#right"></content>
-			</div>
-		</paper-material>
+			</paper-material>
+		</div>
 	</template>
 
 	<script>
@@ -112,6 +132,22 @@ The color of the header can be changed by changing the value for `--paper-header
 				onmove: {
 					type: String,
 					notify: true
+				},
+				/**
+				 * Prevents items from moving to the left list from the right list.
+				 */
+				noleft: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false
+				},
+				/**
+				 * Prevents items from moving to the right list from the left list.
+				 */
+				noright: {
+					type: Boolean,
+					reflectToAttribute: true,
+					value: false
 				}
 			},
 			attached: function() {
@@ -125,14 +161,17 @@ The color of the header can be changed by changing the value for `--paper-header
 			},
 
 			_moveLeft: function(e) {
-				this.querySelector("#left").appendChild(e);
-				this.onMoveFunc(e);
+				if (!this.noleft) {
+					this.querySelector("#left").appendChild(e);
+					this.onMoveFunc(e);
+				}
 			},
 
 			_moveRight: function(e) {
-                
-				this.querySelector("#right").appendChild(e);
-				this.onMoveFunc(e);
+              	if (!this.noright){  
+					this.querySelector("#right").appendChild(e);
+					this.onMoveFunc(e);
+				}
 			},
 
 			_onTap: function(e) {
@@ -157,6 +196,7 @@ The color of the header can be changed by changing the value for `--paper-header
             },
             
             /**
+             * @public
              * Gets all of the elements in the left list
              * @return {Array} of elements
              */
@@ -165,6 +205,7 @@ The color of the header can be changed by changing the value for `--paper-header
             },
             
             /**
+             * @public
              * Gets all of the elements in the right list
              * @return {Array} of elements
              */

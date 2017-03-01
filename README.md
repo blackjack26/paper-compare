@@ -15,7 +15,10 @@ paper-compare is a way to compare two lists and move items from one list to anot
     <link rel="import" href="../paper-item/paper-item.html">
     <link rel="import" href="../iron-demo-helpers/demo-pages-shared-styles.html">
     <style is="custom-style" include="demo-pages-shared-styles">
-    	
+    	.compare-list *:hover{
+            background: var(--paper-grey-200);
+            cursor: pointer;
+        }
     </style>
     <next-code-block></next-code-block>
   </template>

@@ -45,9 +45,9 @@
             </template>
         </demo-snippet>
         
-        <h3>The header color can be styled using --paper-header-color</h3>
+        <h3>Custom styles can be applied to the compare element</h3>
         <demo-snippet class="centered-demo">
-            <paper-compare class="custom" left-title="Inactive" right-title="Active">
+            <paper-compare class="custom" left-title="Group 1" right-title="Group 2">
                 <div role="listbox" class="compare-list" id="left">
                     <paper-item>Kevin M</paper-item>
                     <paper-item>Nick C</paper-item>
@@ -63,7 +63,10 @@
             <template>
                 <style is="custom-style">
                     paper-compare.custom {
-                        --paper-header-color: #339966;
+                        --header-color: #339966;
+                        --list-spacing: 10px;
+                        --cursor-left: crosshair;
+                        --hover-right-background: #f1f8e9;
                     }
                 </style>
             </template>
@@ -72,7 +75,7 @@
         <h3>A function can be bound to when an item shifts sides</h3>
         <demo-snippet class="centered-demo">
             <template>
-                <paper-compare id="function-demo" left-title="Inactive" right-title="Active" onmove="alertName(e)">
+                <paper-compare onmove="alertName(e)" left-title="Inactive" right-title="Active">
                     <div role="listbox" class="compare-list" id="left">
                         <paper-item>Kevin M</paper-item>
                         <paper-item>Nick C</paper-item>
@@ -90,6 +93,25 @@
                         alert(e.innerHTML.trim());
                     }
                 </script>
+            </template>
+        </demo-snippet>
+
+        <h3>Prevent items from moving between lists with noleft and noright</h3>
+        <demo-snippet class="centered-demo">
+            <template>
+                <paper-compare noleft left-title="Pending" right-title="Accepted">
+                    <div role="listbox" class="compare-list" id="left">
+                        <paper-item>Kevin M</paper-item>
+                        <paper-item>Nick C</paper-item>
+                        <paper-item>Phil K</paper-item>
+                        <paper-item>John G</paper-item>
+                    </div>
+                    <div role="listbox" class="compare-list" id="right">
+                        <paper-item>Alicia H</paper-item>
+                        <paper-item>Samantha K</paper-item>
+                        <paper-item>Melissa M</paper-item>
+                    </div>
+                </paper-compare>
             </template>
         </demo-snippet>
 	</div>

@@ -21,7 +21,8 @@
     "polymer": "Polymer/polymer#^1.8.1",
     "paper-item": "PolymerElements/paper-item#^1.2.1",
     "paper-material": "PolymerElements/paper-material#^1.0.6",
-    "web-component-tester": "Polymer/web-component-tester#^5.0.0"
+    "web-component-tester": "Polymer/web-component-tester#^5.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.8"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.1.8",
