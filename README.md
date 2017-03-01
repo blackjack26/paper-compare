@@ -1,4 +1,4 @@
-[![Not Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-not%20published-lightgrey.svg)]()
+[![Not Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-lightgrey.svg)]()
 
 ##&lt;paper-compare&gt;
 
