@@ -147,6 +147,31 @@ The color of the header can be changed by changing the value for `--paper-header
 				}
 			},
             
+            _getElements: function(dir) {
+                var div = this.querySelector("#" + dir);
+                var elemArray = [];
+                for (var i = 0; i < div.children.length; i++) {
+                    elemArray.push(div.children[i]);
+                }
+                return elemArray;
+            },
+            
+            /**
+             * Gets all of the elements in the left list
+             * @return {Array} of elements
+             */
+            getLeftElements: function() {
+                return this._getElements("left");
+            },
+            
+            /**
+             * Gets all of the elements in the right list
+             * @return {Array} of elements
+             */
+            getRightElements: function() {
+                return this._getElements("right");
+            },
+            
             ready: function(e) {
                 this.onMoveFunc = new Function();
             }
