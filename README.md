@@ -2,7 +2,7 @@
 
 ##&lt;paper-compare&gt;
 
-`paper-compare` is a way to compare to lists and move items from one list to another.
+`paper-compare` is a way to compare two lists and move items from one list to another.
 
 <!---
 ```

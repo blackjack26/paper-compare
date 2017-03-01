@@ -1,27 +1,29 @@
 {
   "name": "paper-compare",
   "version": "0.0.1",
+  "homepage": "https://github.com/blackjack26/paper-compare",
+  "authors": [
+    "John Grzechowiak <johngrzechowiak26@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blackjack26/paper-compare.git"
+  },
   "description": "Material design compare element",
   "main": "paper-compare.html",
-  "private": true,
   "keywords": [
     "paper",
     "compare",
     "web-components",
     "polymer"
   ],
-  "authors": [
-    "John Grzechowiak"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/blackjack26/paper-compare.git"
-  },
   "license": "MIT",
-  "homepage": "https://github.com/blackjack26/paper-compare",
+  "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0",
-    "paper-ripple": "PolymerElements/paper-ripple#^1.0.10"
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.8",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
+    "paper-item": "PolymerElements/paper-item#^1.2.1",
+    "paper-material": "PolymerElements/paper-material#^1.0.6"
   },
   "ignore": []
 }

@@ -1,40 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
-	<link href="paper-compare.html" rel="import">
-	<link href="../paper-item/paper-item.html" rel="import">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../iron-component-page/iron-component-page.html">
 </head>
 <body>
-	<div style="max-width: 750px; margin: 0 auto; width: 100%;">
-		<paper-compare left-title="Inactive" right-title="Active" onmove="test()">
-			<div role="listbox" class="compare-list" id="left">
-				<paper-item>Kevin M</paper-item>
-				<paper-item>Nick C</paper-item>
-				<paper-item>Phil K</paper-item>
-				<paper-item>John G</paper-item>
-			</div>
-			<div role="listbox" class="compare-list" id="right">
-				<paper-item>Alicia H</paper-item>
-				<paper-item>Samantha K</paper-item>
-				<paper-item>Melissa M</paper-item>
-			</div>
-		</paper-compare>
-
-		<!--style is="custom-style">
-			paper-compare {
-				--paper-header-color: var(--paper-red-a700);
-			}
-		</style-->
-	</div>
-
-	<script>
-		function test() {
-			console.log("YEAH");
-		}
-	</script>
-
+    <iron-component-page></iron-component-page>
 </body>
-
 </html>

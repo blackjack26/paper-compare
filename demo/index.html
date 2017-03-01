@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    
+    <title>paper-compare demo</title>
+    
+	<script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-icons/iron-icons.html">
+    <link rel="import" href="../../paper-styles/color.html">
+	<link rel="import" href="../../paper-item/paper-item.html">
+	<link rel="import" href="../paper-compare.html">
+    
+    <style is="custom-style" include="demo-pages-shared-styles">
+        .vertical-section-container {
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body unresolved>
+	<div class="vertical-section-container centered">
+        <h3>Compare elements always need 2 lists with items inside them.</h3>
+        <demo-snippet class="centered-demo">
+            <template>
+                <paper-compare left-title="Inactive" right-title="Active">
+                    <div role="listbox" class="compare-list" id="left">
+                        <paper-item>Kevin M</paper-item>
+                        <paper-item>Nick C</paper-item>
+                        <paper-item>Phil K</paper-item>
+                        <paper-item>John G</paper-item>
+                    </div>
+                    <div role="listbox" class="compare-list" id="right">
+                        <paper-item>Alicia H</paper-item>
+                        <paper-item>Samantha K</paper-item>
+                        <paper-item>Melissa M</paper-item>
+                    </div>
+                </paper-compare>
+            </template>
+        </demo-snippet>
+	</div>
+</body>
+</html>

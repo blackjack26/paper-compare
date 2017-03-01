@@ -1,6 +1,38 @@
 <link href="../polymer/polymer.html" rel="import">
 <link href="../paper-material/paper-material.html" rel="import">
 
+<!--
+`paper-compare` is a way to compare two lists and move items from one list to another.
+
+Example:
+
+    <paper-compare left-title="LeftList" right-title="RightList">
+        <div role="listbox" class="compare-list" id="left">
+            <paper-item>Kevin M</paper-item>
+            <paper-item>John G</paper-item>
+        </div>
+        <div role="listbox" class="compare-list" id="right">
+            <paper-item>Alicia H</paper-item>
+            <paper-item>Samantha K</paper-item>
+            <paper-item>Melissa M</paper-item>
+        </div>
+    </paper-compare>
+
+The `elevation` of the element can be raised by setting the elevation attribute. This elevation corresponds to the Material paper design for elevation.
+
+    <paper-compare elevation="2">
+        ...
+    </paper-compare>
+
+The color of the header can be changed by changing the value for `--paper-header-color`.
+
+    <style is="custom-style">
+        paper-compare {
+            --paper-header-color: #339966;
+        }
+    </style>
+-->
+
 <dom-module id="paper-compare">
 	<style is="custom-style">
 		h1 {
@@ -24,6 +56,10 @@
 			flex-grow: 1;
     		flex-basis: 0;
 		}
+        
+        :host([hidden]) {
+            display: none !important;
+        }
 	</style>
 
 	<template>
@@ -45,16 +81,29 @@
 			is: "paper-compare",
 
 			properties: {
+                /**
+                 * The title for the left list which is centered above the list.
+                 */
 				leftTitle: {
 					type: String
 				},
+                /**
+                 * The title for the right list which is centered above the list.
+                 */
 				rightTitle: {
 					type: String
 				},
+                /**
+                 * The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be "deeper" than the last.
+                 */
 				elevation: {
 					type: Number,
-					value: 1
+					value: 1,
+                    readOnly: true
 				},
+                /**
+                 * This is a custom function that is executed every time an element moves from one list to another. By default it does nothing. A proper function would look like "func()".
+                 */
 				onmove: {
 					type: String,
 					notify: true
@@ -70,12 +119,12 @@
 				'tap': '_onTap'
 			},
 
-			moveLeft: function(e) {
+			_moveLeft: function(e) {
 				document.getElementById("left").appendChild(e);
 				this.onMoveFunc();
 			},
 
-			moveRight: function(e) {
+			_moveRight: function(e) {
 				document.getElementById("right").appendChild(e);
 				this.onMoveFunc();
 			},
@@ -84,9 +133,9 @@
 				if (e.target.parentNode.getAttribute("class").includes("compare-list")) {
 					var side = e.target.parentNode.id;
 					if (side == "left")
-						this.moveRight(e.target);
+						this._moveRight(e.target);
 					else if (side == "right")
-						this.moveLeft(e.target);
+						this._moveLeft(e.target);
 					else
 						throw "Parent does not have either 'left' or 'right' id.";
 				}
