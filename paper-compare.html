@@ -85,13 +85,15 @@ The color of the header can be changed by changing the value for `--paper-header
                  * The title for the left list which is centered above the list.
                  */
 				leftTitle: {
-					type: String
+					type: String,
+                    reflectToAttribute: true
 				},
                 /**
                  * The title for the right list which is centered above the list.
                  */
 				rightTitle: {
-					type: String
+					type: String,
+                    reflectToAttribute: true
 				},
                 /**
                  * The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be "deeper" than the last.
@@ -99,7 +101,7 @@ The color of the header can be changed by changing the value for `--paper-header
 				elevation: {
 					type: Number,
 					value: 1,
-                    readOnly: true
+                    reflectToAttribute: true
 				},
                 /**
                  * This is a custom function that is executed every time an element moves from one list to another. By default it does nothing. A proper function would look like "func()".

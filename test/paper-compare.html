@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>paper-compare basic tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    
+    <link rel="import" href="../paper-compare.html">
+</head>
+<body>
+    <test-fixture id="TrivialCompare">
+        <template>
+            <paper-compare left-title="L" right-title="R" elevation="1"></paper-compare>
+        </template>
+    </test-fixture>
+    
+    <script>
+        suite('<paper-compare>', function(){
+            var compare;
+            
+            setup(function(){
+                compare = fixture("TrivialCompare");
+            });
+            
+            test('elevation can be set', function(){
+                compare.elevation = "4";
+                expect(compare.getAttribute("elevation")).to.be.eql("4");
+            });
+            
+            test('left title can be set', function(){
+                compare.leftTitle = "Left Title";
+                expect(compare.getAttribute("left-title")).to.be.eql("Left Title");
+            });
+            
+            test('right title can be set', function(){
+                compare.rightTitle = "Right Title";
+                expect(compare.getAttribute("right-title")).to.be.eql("Right Title");
+            });
+            
+        });
+    </script>
+</body>
+</html>
