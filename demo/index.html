@@ -19,6 +19,9 @@
         .vertical-section-container {
             max-width: 500px;
         }
+        paper-compare {
+            width: 100%;
+        }
     </style>
 </head>
 <body unresolved>
@@ -39,6 +42,54 @@
                         <paper-item>Melissa M</paper-item>
                     </div>
                 </paper-compare>
+            </template>
+        </demo-snippet>
+        
+        <h3>The header color can be styled using --paper-header-color</h3>
+        <demo-snippet class="centered-demo">
+            <paper-compare class="custom" left-title="Inactive" right-title="Active">
+                <div role="listbox" class="compare-list" id="left">
+                    <paper-item>Kevin M</paper-item>
+                    <paper-item>Nick C</paper-item>
+                    <paper-item>Phil K</paper-item>
+                    <paper-item>John G</paper-item>
+                </div>
+                <div role="listbox" class="compare-list" id="right">
+                    <paper-item>Alicia H</paper-item>
+                    <paper-item>Samantha K</paper-item>
+                    <paper-item>Melissa M</paper-item>
+                </div>
+            </paper-compare>
+            <template>
+                <style is="custom-style">
+                    paper-compare.custom {
+                        --paper-header-color: #339966;
+                    }
+                </style>
+            </template>
+        </demo-snippet>
+        
+        <h3>A function can be bound to when an item shifts sides</h3>
+        <demo-snippet class="centered-demo">
+            <template>
+                <paper-compare left-title="Inactive" right-title="Active" onmove="alertName(e)">
+                    <div role="listbox" class="compare-list" id="left">
+                        <paper-item>Kevin M</paper-item>
+                        <paper-item>Nick C</paper-item>
+                        <paper-item>Phil K</paper-item>
+                        <paper-item>John G</paper-item>
+                    </div>
+                    <div role="listbox" class="compare-list" id="right">
+                        <paper-item>Alicia H</paper-item>
+                        <paper-item>Samantha K</paper-item>
+                        <paper-item>Melissa M</paper-item>
+                    </div>
+                </paper-compare>
+                <script>
+                    function alertName(e) {
+                        alert(e.innerHTML.trim());
+                    }
+                </script>
             </template>
         </demo-snippet>
 	</div>

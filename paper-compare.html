@@ -116,7 +116,7 @@ The color of the header can be changed by changing the value for `--paper-header
 			},
 			attached: function() {
 				if (this.onmove) {
-					this.onMoveFunc = new Function('return ' + this.onmove);
+					this.onMoveFunc = new Function('e', 'return ' + this.onmove);
 				}
 			},
 
@@ -125,13 +125,14 @@ The color of the header can be changed by changing the value for `--paper-header
 			},
 
 			_moveLeft: function(e) {
-				document.getElementById("left").appendChild(e);
-				this.onMoveFunc();
+				this.querySelector("#left").appendChild(e);
+				this.onMoveFunc(e);
 			},
 
 			_moveRight: function(e) {
-				document.getElementById("right").appendChild(e);
-				this.onMoveFunc();
+                
+				this.querySelector("#right").appendChild(e);
+				this.onMoveFunc(e);
 			},
 
 			_onTap: function(e) {
@@ -144,7 +145,11 @@ The color of the header can be changed by changing the value for `--paper-header
 					else
 						throw "Parent does not have either 'left' or 'right' id.";
 				}
-			}
+			},
+            
+            ready: function(e) {
+                this.onMoveFunc = new Function();
+            }
 		});
 	</script>
 </dom-module>
