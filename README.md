@@ -1,9 +1,10 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)]()
 
-##&lt;paper-compare&gt;
+## &lt;paper-compare&gt;
 
 `paper-compare` is a way to compare two lists and move items from one list to another.
 
+### Usage
 <!---
 ```
 <custom-element-demo>
